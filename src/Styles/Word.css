@@ -1,0 +1,42 @@
+ol {
+    display: flex;            
+    gap: 1px;     
+    position: absolute;   
+    bottom: 500px;        
+    list-style: none; 
+    padding: 0;
+    margin: 0; 
+    justify-content: center;  
+    flex-wrap: wrap;          
+}
+
+li {
+    font-size: 1rem;           
+    font-weight: bold;
+    width: 32px;               
+    height: 22px;
+    text-align: center;
+}
+
+.letra {
+    font-size: 1rem;
+    font-weight: bold;
+    width: 25px;
+    height: 40px;
+    text-align: center;
+    border-bottom: 0.5px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px;
+}
+
+.espacio {
+    width: 32px;
+    height: 40px;
+    margin: 0 4px;
+    border: none;
+    background: none;
+}
+
+

@@ -1,0 +1,17 @@
+.wordContainer {
+    background-color: green;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+@media screen and (orientation: portrait) {
+    .wordContainer {
+        /* flex-direction: column; */
+        height: 60%;
+    }
+}
