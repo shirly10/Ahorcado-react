@@ -6,8 +6,8 @@ import "../Styles/Word.css";
 
 function Word() {
 
-    const [letras, setLetras] = useState("");
-    const [palabra, setPalabra] = useState("marianna y yo");
+    const [letras, setLetras] = useState("hola");
+    const [palabra, setPalabra] = useState("hola buenas");
     const [juego, setJuego] = useState([]);
 
     useEffect(() => {
