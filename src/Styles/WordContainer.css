@@ -1,5 +1,6 @@
 .wordContainer {
-    background-color: rgb(113, 141, 113);;
+    /* background-color: rgb(113, 141, 113); */
+    position: relative;
     width: 60%;
     height: 100%;
     display: flex;

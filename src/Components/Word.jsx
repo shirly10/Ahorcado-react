@@ -1,38 +1,38 @@
 import { useEffect, useState } from "react";
 import "../Styles/Word.css";
 
-// const letras = "";
-// const palabra = "marianna y yo";
+function Word({configWordContainer}) {
 
-function Word() {
-
-    const [letras, setLetras] = useState("hola");
-    const [palabra, setPalabra] = useState("hola buenas");
+    const [letras, setLetras] = useState("holaoanomsusmeca");
+    const [palabra, setPalabra] = useState("Esterno Cleido MASTOIDEO");
     const [juego, setJuego] = useState([]);
 
     useEffect(() => {
         const estructura = palabra.split("").map((Letra)=>{
-            const letraMinuscula = Letra.toLowerCase();
             return {
-                letra: letraMinuscula,
-                conseguida: letraMinuscula === " " || letras.includes(letraMinuscula)
+                letra: Letra,
+                conseguida: !/[a-zA-Z]/.test((Letra)) || letras.includes(Letra.toLowerCase())
             };
         });
         setJuego(estructura);
-    }, [letras, palabra]);
+        console.log(configWordContainer);
+    }, [configWordContainer]);
 
     return(
-        <ol>
+        <ol className="letra" style={{textTransform: configWordContainer == "AA" ? "uppercase" : configWordContainer == "aa" ? "lowercase" : "none"}}>
             {juego.map((obj, index)=>{
                 return (
-                    <li key={index}
-                    className={obj.letra === " " ? "espacio" : "letra"}
-                    >
-                    {/* {obj.conseguida ? obj.letra : "_"} */}
-                    {/* {obj.conseguida ? (obj.letra === " " ? "\u00A0" : obj.letra) : "_"} */}
-                    {/* {obj.conseguida ? (obj.letra === " " ? " " : obj.letra) : "_"} */}
-                    {obj.conseguida && obj.letra !== " " ? obj.letra : ""}
+                    /[a-zA-Z]/.test(obj.letra) ?
+                    <li key={index}>
+                        {obj.conseguida ? obj.letra : "\u00A0"}
                     </li>
+                :
+                    obj.conseguida == " " ?
+                        "\u00A0\u00A0\u00A0\u00A0"
+                    :
+                        <li key={index} style={{border: "none"}}>
+                            {obj.letra}
+                        </li>
                 )    
             })}
         </ol>
