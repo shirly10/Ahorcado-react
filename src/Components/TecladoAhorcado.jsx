@@ -1,12 +1,27 @@
-import { useRef } from "react";
+import { useRef, useContext, useEffect } from "react";
 import "../Styles/TecladoAhorcado.css"
+import { ConfigContext } from "../Contexts/ConfigContext";
 
-function TecladoAhorcado({children, tecleo}) {
+function TecladoAhorcado({children}) {
+
+    const {letras, setLetras, palabra, chairHandler} = useContext(ConfigContext);
+
+    useEffect(() => {
+        if(!letras) {
+            refBoton.current.removeAttribute("disabled");
+        }
+    }, [letras]);
 
     const refBoton = useRef();
 
     const manejarBoton = () => {
-        tecleo(children);
+        setLetras(letras + children);
+
+        if(!palabra.toLowerCase().includes(String(children).toLowerCase())) {
+            chairHandler();
+        }
+
+
         refBoton.current.setAttribute("disabled", true);
     }
 

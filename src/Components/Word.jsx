@@ -1,22 +1,24 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "../Styles/Word.css";
+import { ConfigContext } from "../Contexts/ConfigContext";
 
 function Word({configWordContainer}) {
 
-    const [letras, setLetras] = useState("holaoanomsusmeca");
-    const [palabra, setPalabra] = useState("Esterno Cleido MASTOIDEO");
+    const {palabra, letras} = useContext(ConfigContext);
+
     const [juego, setJuego] = useState([]);
 
     useEffect(() => {
         const estructura = palabra.split("").map((Letra)=>{
             return {
                 letra: Letra,
-                conseguida: !/[a-zA-Z]/.test((Letra)) || letras.includes(Letra.toLowerCase())
+                conseguida: !/[a-zA-Z]/.test((Letra)) || letras.toLowerCase()
+                .includes(Letra.toLowerCase())
             };
         });
         setJuego(estructura);
         console.log(configWordContainer);
-    }, [configWordContainer]);
+    }, [configWordContainer, letras, palabra]);
 
     return(
         <ol className="letra" style={{textTransform: configWordContainer == "AA" ? "uppercase" : configWordContainer == "aa" ? "lowercase" : "none"}}>
